@@ -13,12 +13,12 @@ ray start --head --num-gpus 2
 # 3. 运行训练
 python3 -m verl.trainer.main_ppo \
     algorithm.adv_estimator=grpo \
-    data.train_files=$HOME_DIR/workspace/project/RLSpace/verl/mywork/data/train.parquet \
-    data.val_files=$HOME_DIR/workspace/project/RLSpace/verl/mywork/data/val.parquet \
+    data.train_files=/data/sk/project/drug_recommendation/RLSpace/verl/mywork/data/train.parquet \
+    data.val_files=/data/sk/project/drug_recommendation/RLSpace/verl/mywork/data/val.parquet \
     data.train_batch_size=64 \
     data.max_prompt_length=2560 \
     data.max_response_length=3072 \
-    actor_rollout_ref.model.path=$HOME_DIR/workspace/project/Models/Qwen3-8B-SFT-Merged-TFG/0202 \
+    actor_rollout_ref.model.path=/data/sk/project/drug_recommendation/Models/Qwen3-8B-SFT-Merged-TFG/0202 \
     actor_rollout_ref.model.use_remove_padding=True \
     actor_rollout_ref.actor.ppo_mini_batch_size=64 \
     actor_rollout_ref.actor.ppo_micro_batch_size_per_gpu=8 \
@@ -43,7 +43,7 @@ python3 -m verl.trainer.main_ppo \
     trainer.max_actor_ckpt_to_keep=50 \
     trainer.total_epochs=3 \
     reward_model.enable=False \
-    custom_reward_function.path=$HOME_DIR/workspace/project/RLSpace/verl/mywork/reward_grpo.py \
+    custom_reward_function.path=/data/sk/project/drug_recommendation/RLSpace/verl/mywork/reward_grpo.py \
     custom_reward_function.name=compute_score \
     actor_rollout_ref.model.lora_rank=64 \
     actor_rollout_ref.model.lora_alpha=128 \
